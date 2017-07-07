@@ -1,11 +1,12 @@
 //requiring path
+const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 module.exports = {
 
   // define entry point
-  entry: './src/script-1.js',
+  entry: './src/app.js',
 
   // define output point
   output: {
@@ -47,7 +48,8 @@ module.exports = {
 
 //plugins
 // html template
-plugins: [new htmlWebpackPlugin({
+plugins: [
+new htmlWebpackPlugin({
   title: "nd project",
   template: './src/index.html'
 }),
@@ -56,6 +58,13 @@ new ExtractTextPlugin({
   filename: 'style.css',
   disable: false,
   allChunks: true
-})] //end plugin
+}),
+new webpack.ProvidePlugin({
+  $: "jquery",
+  jQuery: 'jquery'
+})
+
+] //end plugin
+
  }
 // end export

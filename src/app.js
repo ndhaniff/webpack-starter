@@ -1,3 +1,4 @@
-let message = require('./script-2');
+
+require('./basic.js');
 //inject css
 require('./css/style.scss');
